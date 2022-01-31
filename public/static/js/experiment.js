@@ -42,9 +42,21 @@ loadJson = function (file) {
   return result.responseJSON;
 };
 
+const postData = (data) => {
+
+  const postData = JSON.stringify(data);
+
+  $.ajax({
+    type: "POST",
+    url: 'data',
+    data: postData,
+    dataType: 'json'
+  });
+}
+
 $(window).on('load', function () {
   var trials;
-  trials = loadJson('http://127.0.0.1:8080/static/json/trials.json');
+  trials = loadJson('static/json/trials.json');
 
   return initializeExperiment(trials);
 });
@@ -80,6 +92,10 @@ initializeExperiment = function (trials) {
     timeline: experiment_timeline,
     // show_progress_bar: true
     on_finish: function () {
+
+      const data = jsPsych.data.getData();
+
+      postData(data);
       return jsPsych.data.displayData();
     },
     on_data_update: function (data) {
