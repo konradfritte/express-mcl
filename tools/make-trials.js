@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const main = () => {
-    const trials = generateTrials(10, true);
+    const trials = generateTrials(20, true);
 
     writeTrialsToFile('../public/static/json/trials.json', trials);
 }
