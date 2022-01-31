@@ -3,7 +3,7 @@ const fs = require('fs');
 const main = () => {
     const trials = generateTrials(10, true);
 
-    writeTrialsToFile('../static/json/trials.json', trials);
+    writeTrialsToFile('../public/static/json/trials.json', trials);
 }
 
 const generateTrials = (amount, offsetEnabled = false) => {
@@ -134,12 +134,10 @@ const generateTrialFromBlueprint = (offset) => {
         edgeLabels: 'reward', // object mapping from edge names (s0 + '__' + s1) to labels
         edgeDisplay: 'never', // one of 'never', 'hover', 'click', 'always'
         edgeClickCost: 0, // subtracted from score every time an edge is clicked
-        stimId: 1994, // for your own data-keeping
         playerImage: 'static/images/plane.png',
         playerImageScale: 0.3,
         size: 120, // determines the size of states, text, etc...
-        leftMessage: 'Left Message',
-        centerMessage: 'Center Message'
+        centerMessage: 'click on the fields to unveil their rewards'
     };
 
     const graph = {};
